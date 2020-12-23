@@ -1,25 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import PlayingCard from './playinCards'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         <PlayingCard title="test"/>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PlayingCard title="test" description="short description of the title. max two lines." 
+      backgroundText="*Test* markdowned text. [I'm an inline-style link](https://www.google.com)"/>
     </div>
   );
 }
