@@ -9,6 +9,7 @@ interface CardProps {
     title: string;
     description: string;
     detailedText: string;
+    id: string; //Why doesn't it complain?? json data has "key"
     imgSrc?: string;
 };
 
