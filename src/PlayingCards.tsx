@@ -1,8 +1,10 @@
 import Card from 'react-bootstrap/Card'
 import ReactMarkdown from 'react-markdown'
-
-import 'holderjs'
+import './PlayingCards.css'
 import { useState } from 'react'
+
+
+
 enum CardSides {Front, Reverse}
 
 interface CardProps  {
@@ -17,16 +19,16 @@ function PlayingCard(props: CardProps) {
 
     if (visibleSide === CardSides.Reverse){
         return (
-            <Card style={{ width: '18rem' }} onClick={()=> setVisibleSide(CardSides.Front)}>
-                <Card.Body>
-                    <Card.Text><ReactMarkdown>{props.backgroundText}</ReactMarkdown></Card.Text>
-                </Card.Body>
-            </Card>
+                <Card className="playingCard" onClick={()=> setVisibleSide(CardSides.Front)}>
+                    <Card.Body>
+                        <Card.Text><ReactMarkdown>{props.backgroundText}</ReactMarkdown></Card.Text>
+                    </Card.Body>
+                </Card>
         )
    } else {
         return (
-            <Card style={{ width: '18rem' }} onClick={()=> setVisibleSide(CardSides.Reverse)}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+            <Card className="playingCard" onClick={()=> setVisibleSide(CardSides.Reverse)}>
+                <Card.Img variant="top" src="logo192.png" />
                 <Card.Body>
                     <Card.Title><h1>{props.title}</h1></Card.Title>
                     <Card.Text>{props.description}</Card.Text>
@@ -37,4 +39,4 @@ function PlayingCard(props: CardProps) {
 }
 
 
-export default PlayingCard
+export default PlayingCard 
