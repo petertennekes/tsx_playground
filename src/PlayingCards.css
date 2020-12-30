@@ -1,7 +1,16 @@
-.playingCard {
+.card.playingCard {
     width: 18rem;
     height: 24rem;
-    background-color: seashell;
+    background-color:lightgrey;
     margin: 1rem;
     border-radius: 1rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+
+
+}
+.card.playingCard.selected {
+    border-color: red;
+
 }

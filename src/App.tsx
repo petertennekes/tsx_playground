@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CardDeck from './CardDeck'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
