@@ -1,29 +1,21 @@
-import PlayingCard from './PlayingCards'
-import { useEffect, useState } from 'react'
+import PlayingCard from "./PlayingCards";
+import useCards from "./useCards";
 
 interface CardDeckProps {
-    cardsURL: string
+  cardsURL: string;
 }
 
 function CardDeck(props: CardDeckProps) {
+  const { cards, loading } = useCards(props.cardsURL);
 
-    async function getCards() { // difference function x(){} and const x = ()=>{}?
-        const response = await fetch(props.cardsURL);
-        const json = await response.json(); // what is await ?
-        setCards(json);
-    }
+  if (loading) return <h1>LOADING</h1>;
 
-    const [cards, setCards] = useState([]);
-
-    useEffect(() => {
-        getCards() //why does this not loop endlessly?
-    })
-    return (
-
-        <div style={{ display: 'flex' }}>
-           {cards && cards.length > 0 && cards.map((card, index) => <PlayingCard {...card} />)}
-        </div>
-        )
+  return (
+    <div style={{ display: "flex" }}>
+      {cards.length > 0 &&
+        cards.map((card, index) => <PlayingCard {...card} />)}
+    </div>
+  );
 }
 
-export default CardDeck
+export default CardDeck;
