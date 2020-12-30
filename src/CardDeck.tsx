@@ -6,29 +6,18 @@ interface CardDeckProps {
 }
 
 function CardDeck(props: CardDeckProps) {
-    const getCards = () => {
-        fetch(props.cardsURL
-            , {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            }
-        )
-            .then(function (response) {
-                console.log(response)
-                return response.json();
-            })
-            .then(function (myJson) {
-                setCards(myJson);
-            });
+
+    async function getCards() { // difference function x(){} and const x = ()=>{}?
+        const response = await fetch(props.cardsURL);
+        const json = await response.json(); // what is await ?
+        setCards(json);
     }
 
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        getCards()
-    }, [])
+        getCards() //why does this not loop endlessly?
+    })
     return (
 
         <div style={{ display: 'flex' }}>
