@@ -25,12 +25,12 @@ function PlayingCard(props: CardProps) {
     const { title, description, detailedText, imgSrc = "logo192.png" } = props
 
     return (<Card className="playingCard" onClick={toggleSide}>
-        <Card.Img variant="top" src={imgSrc} />
+        {visibleSide === CardSides.Front && <Card.Img variant="top" src={imgSrc} />}
         <Card.Body>
             {visibleSide === CardSides.Front && <Card.Title><h1>{title}</h1></Card.Title>}
-            <Card.Text>
-            {visibleSide === CardSides.Front ? description : <ReactMarkdown>{detailedText}</ReactMarkdown>}
-            </Card.Text>
+            <div className="card-text"> {/* Cannot use Card.text directly as this would result in nested <p> when using ReactMarkdown */}
+            {visibleSide === CardSides.Front ? <p>{description}</p> : <ReactMarkdown>{detailedText}</ReactMarkdown>}
+            </div>
         </Card.Body>
     </Card >)
 }
