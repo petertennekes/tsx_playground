@@ -6,14 +6,22 @@ interface CardDeckProps {
 }
 
 function CardDeck(props: CardDeckProps) {
-  const { cards, loading } = useCards(props.cardsURL);
+  const { cards, loading, createOnClick, isSelected } = useCards(
+    props.cardsURL
+  );
 
   if (loading) return <h1>LOADING</h1>;
 
   return (
     <div style={{ display: "flex" }}>
       {cards.length > 0 &&
-        cards.map((card, index) => <PlayingCard {...card} />)}
+        cards.map((card, index) => (
+          <PlayingCard
+            {...card}
+            onClick={createOnClick(index)}
+            isSelected={isSelected(index)}
+          />
+        ))}
     </div>
   );
 }

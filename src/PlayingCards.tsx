@@ -15,13 +15,15 @@ export interface CardProps {
   title: string;
   description: string;
   detailedText: string;
-  id: string; //Why doesn't it complain?? json data has "key"
+  id: string;
   imgSrc?: string;
+  isSelected: boolean;
+  onClick: () => void;
+  style: any;
 }
 
 function PlayingCard(props: CardProps) {
   const [visibleSide, setVisibleSide] = useState(CardSides.Front);
-  const [selected, setSelected] = useState(false);
   const toggleSide = () => {
     if (visibleSide === CardSides.Front) {
       setVisibleSide(CardSides.Reverse);
@@ -29,13 +31,21 @@ function PlayingCard(props: CardProps) {
       setVisibleSide(CardSides.Front);
     }
   };
-  const toggleSelected = () => setSelected(!selected);
-  const { title, description, detailedText, imgSrc = "logo192.png" } = props;
+  const {
+    title,
+    description,
+    detailedText,
+    imgSrc = "logo192.png",
+    isSelected,
+    onClick,
+    style,
+  } = props;
 
   return (
     <Card
-      className={classNames("playingCard", selected && "selected")}
-      onDoubleClick={toggleSelected}
+      className={classNames("playingCard", isSelected && "selected")}
+      onClick={onClick}
+      style={style}
     >
       {visibleSide === CardSides.Front && (
         <Card.Img variant="top" src={imgSrc} />
