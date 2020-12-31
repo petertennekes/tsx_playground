@@ -8,27 +8,12 @@ export default function useCards(cardsURL: string) {
   const [cards, setCards] = useState<CardProps[]>([]);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
-  const createOnClick = (index: number) => {
-    return () => {
-      const currentSelection = [index, ...selectedCards];
-
-      setSelectedCards(currentSelection);
-
-      if (currentSelection.length === 2) {
-        const cardsCopy = [...cards];
-        const [selection1, selection2] = currentSelection;
-
-        const card1 = cards[selection1];
-        const card2 = cards[selection2];
-
-        cardsCopy[selection1] = card2;
-        cardsCopy[selection2] = card1;
-
-        setTimeout(() => {
-          setCards(cardsCopy);
-          setSelectedCards([]);
-        }, 100);
-      }
+  const createOnDrop = (indexTarget: number) => {
+    return (item: any) => {
+      const cardsCopy = [...cards];
+      const itemToMove = cardsCopy.splice(item.indexSource, 1);
+      cardsCopy.splice(indexTarget, 0, ...itemToMove);
+      setCards(cardsCopy);
     };
   };
 
@@ -46,7 +31,7 @@ export default function useCards(cardsURL: string) {
   return {
     cards,
     loading,
-    createOnClick,
+    createOnDrop,
     isSelected,
   };
 }

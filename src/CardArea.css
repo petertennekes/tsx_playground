@@ -1,0 +1,6 @@
+.card-area {
+  display: inline-flex;
+}
+.card-area .left {
+  width: 2rem;
+}

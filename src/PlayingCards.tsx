@@ -21,11 +21,20 @@ export interface CardProps {
   id: string;
   imgSrc?: string;
   isSelected: boolean;
-  onClick: () => void;
   style: any;
+  indexSource: number;
 }
 
 function PlayingCard(props: CardProps) {
+  const {
+    title,
+    description,
+    detailedText,
+    imgSrc = "logo192.png",
+    isSelected,
+    style,
+    indexSource,
+  } = props;
   const [visibleSide, setVisibleSide] = useState(CardSides.Front);
   const toggleSide = () => {
     if (visibleSide === CardSides.Front) {
@@ -35,33 +44,23 @@ function PlayingCard(props: CardProps) {
     }
   };
   const [{ isDragging }, drag] = useDrag({
-    item: { type: DragTypes.CARD },
+    item: { type: DragTypes.CARD, indexSource: indexSource },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   });
 
-  const {
-    title,
-    description,
-    detailedText,
-    imgSrc = "logo192.png",
-    isSelected,
-    onClick,
-    style,
-  } = props;
-
   return (
     <div
       className={classNames("playingCard", isSelected && "selected")}
-      onClick={onClick}
+      onClick={toggleSide}
       style={{
-        opacity: isDragging ? 0.5 : 1,
+        opacity: isDragging ? 0.7 : 1,
         ...style,
       }}
       ref={drag}
     >
-      {visibleSide === CardSides.Front && <img src={imgSrc} />}
+      {visibleSide === CardSides.Front && <img alt={title} src={imgSrc} />}
       <div className="card-body">
         {visibleSide === CardSides.Front && (
           <div className="card-title">

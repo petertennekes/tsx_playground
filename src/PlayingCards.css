@@ -6,7 +6,7 @@
   border-radius: 1rem;
   border-width: 2px;
   border-style: solid;
-  border-color: transparent;
+  border-color: grey;
 }
 .playingCard.selected {
   border-color: red;
