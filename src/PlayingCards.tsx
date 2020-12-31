@@ -1,5 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { useDrag } from "react-dnd";
 
 import ReactMarkdown from "react-markdown";
 import "./PlayingCards.css";
@@ -10,6 +9,10 @@ enum CardSides {
   Front,
   Reverse,
 }
+
+export const DragTypes = {
+  CARD: "card",
+};
 
 export interface CardProps {
   title: string;
@@ -31,6 +34,13 @@ function PlayingCard(props: CardProps) {
       setVisibleSide(CardSides.Front);
     }
   };
+  const [{ isDragging }, drag] = useDrag({
+    item: { type: DragTypes.CARD },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
   const {
     title,
     description,
@@ -42,19 +52,21 @@ function PlayingCard(props: CardProps) {
   } = props;
 
   return (
-    <Card
+    <div
       className={classNames("playingCard", isSelected && "selected")}
       onClick={onClick}
-      style={style}
+      style={{
+        opacity: isDragging ? 0.5 : 1,
+        ...style,
+      }}
+      ref={drag}
     >
-      {visibleSide === CardSides.Front && (
-        <Card.Img variant="top" src={imgSrc} />
-      )}
-      <Card.Body>
+      {visibleSide === CardSides.Front && <img src={imgSrc} />}
+      <div className="card-body">
         {visibleSide === CardSides.Front && (
-          <Card.Title>
+          <div className="card-title">
             <h1>{title}</h1>
-          </Card.Title>
+          </div>
         )}
         <div className="card-text">
           {" "}
@@ -65,13 +77,11 @@ function PlayingCard(props: CardProps) {
             <ReactMarkdown>{detailedText}</ReactMarkdown>
           )}
         </div>
-      </Card.Body>
-      <Card.Footer>
-        <Button variant="primary" onClick={toggleSide}>
-          Flip
-        </Button>
-      </Card.Footer>
-    </Card>
+      </div>
+      <div className="card-footer">
+        <button onClick={toggleSide}>Flip</button>
+      </div>
+    </div>
   );
 }
 

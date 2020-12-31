@@ -1,4 +1,4 @@
-.card.playingCard {
+.playingCard {
   width: 18rem;
   height: 24rem;
   background-color: lightgrey;
@@ -8,6 +8,6 @@
   border-style: solid;
   border-color: transparent;
 }
-.card.playingCard.selected {
+.playingCard.selected {
   border-color: red;
 }

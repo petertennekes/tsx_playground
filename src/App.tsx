@@ -1,12 +1,15 @@
 import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import "./App.css";
 import CardDeck from "./CardDeck";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <CardDeck cardsURL="card-deck.json" />
+      <DndProvider backend={HTML5Backend}>
+        <CardDeck cardsURL="card-deck.json" />
+      </DndProvider>
     </div>
   );
 }
