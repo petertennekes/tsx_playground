@@ -7,7 +7,7 @@ interface CardDeckProps {
 }
 
 function CardDeck(props: CardDeckProps) {
-  const { cards, loading, createOnDrop, isSelected } = useCards(props.cardsURL);
+  const { cards, loading, createOnDrop } = useCards(props.cardsURL);
 
   if (loading) return <h1>LOADING</h1>;
 
@@ -16,11 +16,7 @@ function CardDeck(props: CardDeckProps) {
       {cards.length > 0 &&
         cards.map((card, index) => (
           <CardArea key={index} onDrop={createOnDrop(index)}>
-            <PlayingCard
-              {...card}
-              isSelected={isSelected(index)}
-              indexSource={index}
-            />
+            <PlayingCard {...card} indexSource={index} />
           </CardArea>
         ))}
     </div>

@@ -6,7 +6,6 @@ const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 export default function useCards(cardsURL: string) {
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState<CardProps[]>([]);
-  const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
   const createOnDrop = (indexTarget: number) => {
     return (item: any) => {
@@ -24,14 +23,9 @@ export default function useCards(cardsURL: string) {
     });
   }, [cardsURL]);
 
-  const isSelected = (index: number) => {
-    return selectedCards.indexOf(index) >= 0;
-  };
-
   return {
     cards,
     loading,
     createOnDrop,
-    isSelected,
   };
 }

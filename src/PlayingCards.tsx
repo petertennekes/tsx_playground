@@ -20,7 +20,6 @@ export interface CardProps {
   detailedText: string;
   id: string;
   imgSrc?: string;
-  isSelected: boolean;
   style: any;
   indexSource: number;
 }
@@ -31,7 +30,6 @@ function PlayingCard(props: CardProps) {
     description,
     detailedText,
     imgSrc = "logo192.png",
-    isSelected,
     style,
     indexSource,
   } = props;
@@ -52,7 +50,7 @@ function PlayingCard(props: CardProps) {
 
   return (
     <div
-      className={classNames("playingCard", isSelected && "selected")}
+      className={classNames("playingCard")}
       onClick={toggleSide}
       style={{
         opacity: isDragging ? 0.7 : 1,
@@ -69,7 +67,6 @@ function PlayingCard(props: CardProps) {
         )}
         <div className="card-text">
           {" "}
-          {/* Cannot use Card.text directly as this would result in nested <p> when using ReactMarkdown */}
           {visibleSide === CardSides.Front ? (
             <p>{description}</p>
           ) : (

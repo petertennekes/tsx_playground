@@ -1,8 +1,8 @@
 .playingCard {
-  width: 18rem;
-  height: 24rem;
+  width: 16rem;
+  height: 22rem;
   background-color: lightgrey;
-  margin: 1rem;
+  margin: 0rem;
   border-radius: 1rem;
   border-width: 2px;
   border-style: solid;
