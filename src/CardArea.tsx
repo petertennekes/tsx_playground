@@ -1,6 +1,7 @@
 import { useDrop } from "react-dnd";
 import { DragTypes } from "./PlayingCards";
 import "./CardArea.css";
+import WithProps from "./WithProps";
 
 interface CardAreaProps {
   onDrop: (item: any) => void;
@@ -15,15 +16,10 @@ const CardArea = (props: CardAreaProps) => {
       isOver: !!monitor.isOver(),
     }),
   });
+
   return (
-    <div className="card-area">
-      <div
-        className="left"
-        ref={drop}
-        style={{ backgroundColor: isOver ? "yellow" : "transparent" }}
-      ></div>
-      <div className="card-place">{props.children}</div>
-      <div className="right"></div>
+    <div className="card-area" ref={drop}>
+      <WithProps isOver={isOver}>{props.children}</WithProps>
     </div>
   );
 };

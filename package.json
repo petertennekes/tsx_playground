@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/holderjs": "^2.9.1"
   }
 }

@@ -18,10 +18,11 @@ export interface CardProps {
   title: string;
   description: string;
   detailedText: string;
-  id: string;
+  key: string;
   imgSrc?: string;
   style: any;
   indexSource: number;
+  isOver?: boolean;
 }
 
 function PlayingCard(props: CardProps) {
@@ -32,6 +33,7 @@ function PlayingCard(props: CardProps) {
     imgSrc = "logo192.png",
     style,
     indexSource,
+    isOver,
   } = props;
   const [visibleSide, setVisibleSide] = useState(CardSides.Front);
   const toggleSide = () => {
@@ -54,6 +56,7 @@ function PlayingCard(props: CardProps) {
       onClick={toggleSide}
       style={{
         opacity: isDragging ? 0.7 : 1,
+        transform: isOver ? "translateY(20px)" : "",
         ...style,
       }}
       ref={drag}

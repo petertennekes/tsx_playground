@@ -1,6 +1,10 @@
 .card-area {
   display: inline-flex;
+  margin-right: 15px;
+  margin-left: 15px;
 }
-.card-area .left {
-  width: 2rem;
+
+.card-area:first-child {
+  margin-right: 15px;
+  margin-left: 0;
 }

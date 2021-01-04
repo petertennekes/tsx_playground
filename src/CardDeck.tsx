@@ -15,7 +15,7 @@ function CardDeck(props: CardDeckProps) {
     <div style={{ display: "flex" }}>
       {cards.length > 0 &&
         cards.map((card, index) => (
-          <CardArea key={index} onDrop={createOnDrop(index)}>
+          <CardArea key={card.key} onDrop={createOnDrop(index)}>
             <PlayingCard {...card} indexSource={index} />
           </CardArea>
         ))}

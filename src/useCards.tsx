@@ -9,6 +9,7 @@ export default function useCards(cardsURL: string) {
 
   const createOnDrop = (indexTarget: number) => {
     return (item: any) => {
+      console.log(item.indexSource, indexTarget);
       const cardsCopy = [...cards];
       const itemToMove = cardsCopy.splice(item.indexSource, 1);
       cardsCopy.splice(indexTarget, 0, ...itemToMove);

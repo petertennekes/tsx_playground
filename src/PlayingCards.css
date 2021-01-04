@@ -7,7 +7,12 @@
   border-width: 2px;
   border-style: solid;
   border-color: grey;
+  transition: transform 0.2s ease-in;
 }
 .playingCard.selected {
   border-color: red;
+}
+
+.playingCard img {
+  filter: invert() grayscale();
 }
