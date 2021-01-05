@@ -3,6 +3,7 @@ import { useDrag } from "react-dnd";
 import ReactMarkdown from "react-markdown";
 import "./PlayingCards.css";
 import { useState } from "react";
+import { Direction } from "./CardArea";
 const classNames = require("classnames");
 
 enum CardSides {
@@ -23,6 +24,7 @@ export interface CardProps {
   style: any;
   indexSource: number;
   isOver?: boolean;
+  directionOfDrag?: Direction;
 }
 
 function PlayingCard(props: CardProps) {
@@ -34,6 +36,7 @@ function PlayingCard(props: CardProps) {
     style,
     indexSource,
     isOver,
+    directionOfDrag,
   } = props;
   const [visibleSide, setVisibleSide] = useState(CardSides.Front);
   const toggleSide = () => {
@@ -49,14 +52,19 @@ function PlayingCard(props: CardProps) {
       isDragging: !!monitor.isDragging(),
     }),
   });
-
   return (
     <div
       className={classNames("playingCard")}
       onClick={toggleSide}
       style={{
-        opacity: isDragging ? 0.7 : 1,
-        transform: isOver ? "translateY(20px)" : "",
+        opacity: isDragging ? 0.5 : 1,
+        transform: isOver
+          ? directionOfDrag === Direction.Left
+            ? "translateX(30px)"
+            : directionOfDrag === Direction.Right
+            ? "translateX(-30px)"
+            : ""
+          : "",
         ...style,
       }}
       ref={drag}
