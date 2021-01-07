@@ -18,6 +18,7 @@ export default function useCards(cardsURL: string) {
   };
 
   useEffect(() => {
+    console.log(cardsURL);
     fetchJSON(cardsURL).then((fetchedCards) => {
       setCards(fetchedCards);
       setLoading(false);
