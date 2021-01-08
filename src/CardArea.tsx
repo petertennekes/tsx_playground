@@ -30,7 +30,6 @@ const CardArea = (props: CardAreaProps) => {
       };
     },
   });
-  console.log(directionOfDrag);
   return (
     <div className="card-area">
       <div>
