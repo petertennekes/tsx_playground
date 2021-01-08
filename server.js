@@ -10,7 +10,7 @@ app.get('/api/cards', function (req, res) {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+ res.send('Hello World!')
+});
 
 app.listen(process.env.PORT || 8080);
