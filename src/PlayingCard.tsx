@@ -1,7 +1,7 @@
 import { useDrag } from "react-dnd";
 
 import ReactMarkdown from "react-markdown";
-import "./PlayingCards.css";
+import "./PlayingCard.css";
 import { useState } from "react";
 import { Direction } from "./CardArea";
 const classNames = require("classnames");

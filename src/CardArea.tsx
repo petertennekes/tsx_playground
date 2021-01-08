@@ -1,5 +1,5 @@
 import { useDrop } from "react-dnd";
-import { DragTypes } from "./PlayingCards";
+import { DragTypes } from "./PlayingCard";
 import "./CardArea.css";
 import WithProps from "./WithProps";
 import classNames from "classnames";

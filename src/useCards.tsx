@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CardProps } from "./PlayingCards";
+import { CardProps } from "./PlayingCard";
 
 const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 
