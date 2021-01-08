@@ -12,7 +12,15 @@
 .playingCard.selected {
   border-color: red;
 }
-
+.playingCard.hovered.directionLeft {
+  transform: translateX(30px);
+}
+.playingCard.hovered.directionRight {
+  transform: translateX(-30px);
+}
+.playingCard.dragged {
+  opacity: 0.5;
+}
 .playingCard img {
   filter: invert() grayscale();
 }
