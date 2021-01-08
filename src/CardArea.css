@@ -12,7 +12,7 @@
   z-index: 100;
 }
 .highlight-area.left {
-  left: 0px;
+  left: 0;
   float: left;
 }
 .highlight-area.right {
