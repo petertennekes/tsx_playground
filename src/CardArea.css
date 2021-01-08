@@ -4,21 +4,24 @@
   width: 240px;
   height: 400px;
 }
-.card-area .left,
-.right {
+.highlight-area {
   position: absolute;
   width: 70px;
 
   height: 350px;
   z-index: 100;
 }
-.card-area .left {
+.highlight-area.left {
   left: 0px;
   float: left;
 }
-.card-area .right {
+.highlight-area.right {
   right: -40px;
   float: right;
+}
+
+.highlight-area.hovered {
+  background-image: radial-gradient(lightblue 30%, transparent 70%);
 }
 
 .card-area .card-holder {
