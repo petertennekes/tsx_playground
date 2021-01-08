@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <DndProvider backend={HTML5Backend}>
-        <CardDeck cardsURL="http://localhost:3000/api/cards" />
+        <CardDeck cardsURL="/api/cards" />
       </DndProvider>
     </div>
   );
