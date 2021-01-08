@@ -54,19 +54,14 @@ function PlayingCard(props: CardProps) {
   });
   return (
     <div
-      className={classNames("playingCard")}
+      className={classNames("playingCard", {
+        hovered: isOver,
+        directionLeft: directionOfDrag === Direction.Left,
+        directionRight: directionOfDrag === Direction.Right,
+        dragged: isDragging,
+      })}
       onClick={toggleSide}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        transform: isOver
-          ? directionOfDrag === Direction.Left
-            ? "translateX(30px)"
-            : directionOfDrag === Direction.Right
-            ? "translateX(-30px)"
-            : ""
-          : "",
-        ...style,
-      }}
+      style={style}
       ref={drag}
     >
       {visibleSide === CardSides.Front && <img alt={title} src={imgSrc} />}
