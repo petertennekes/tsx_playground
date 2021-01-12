@@ -1,7 +1,8 @@
 import { useDrop } from "react-dnd";
-import { DragTypes } from "./PlayingCards";
+import { DragTypes } from "./PlayingCard";
 import "./CardArea.css";
 import WithProps from "./WithProps";
+import classNames from "classnames";
 
 interface CardAreaProps {
   onDrop: (item: any) => void;
@@ -29,27 +30,18 @@ const CardArea = (props: CardAreaProps) => {
       };
     },
   });
-  console.log(directionOfDrag);
   return (
     <div className="card-area">
       <div>
         <div
-          className="left"
-          style={{
-            backgroundImage:
-              isOver && directionOfDrag === Direction.Left
-                ? "radial-gradient(lightblue 30%, transparent 70%"
-                : "",
-          }}
+          className={classNames("highlight-area left", {
+            hovered: isOver && directionOfDrag === Direction.Left,
+          })}
         ></div>
         <div
-          className="right"
-          style={{
-            backgroundImage:
-              isOver && directionOfDrag === Direction.Right
-                ? "radial-gradient(lightblue 30%, transparent 70%"
-                : "",
-          }}
+          className={classNames("highlight-area right", {
+            hovered: isOver && directionOfDrag === Direction.Right,
+          })}
         ></div>
       </div>
       <div className="card-holder" ref={drop}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CardProps } from "./PlayingCards";
+import { CardProps } from "./PlayingCard";
 
 const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 
@@ -9,7 +9,6 @@ export default function useCards(cardsURL: string) {
 
   const createOnDrop = (indexTarget: number) => {
     return (item: any) => {
-      console.log(item.indexSource, indexTarget);
       const cardsCopy = [...cards];
       const itemToMove = cardsCopy.splice(item.indexSource, 1);
       cardsCopy.splice(indexTarget, 0, ...itemToMove);

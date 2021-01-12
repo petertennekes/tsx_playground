@@ -1,5 +1,5 @@
 import CardArea from "./CardArea";
-import PlayingCard from "./PlayingCards";
+import PlayingCard from "./PlayingCard";
 import useCards from "./useCards";
 
 interface CardDeckProps {
