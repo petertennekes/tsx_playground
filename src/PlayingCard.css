@@ -1,26 +1,33 @@
 .playingCard {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 98%;
+  height: 99%;
   background-color: lightgrey;
-  margin: 0rem;
+  margin: 0;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
   border-color: grey;
-  transition: transform 0.2s ease-in;
+  transition: transform 0.1s;
+  z-index: 0;
 }
 .playingCard.selected {
   border-color: red;
 }
+
+.playingCard.hovered{
+  z-index: 10;
+}
+
 .playingCard.hovered.directionLeft {
-  transform: translateX(30px);
+  transform: translate(60px, 10px);
 }
 .playingCard.hovered.directionRight {
-  transform: translateX(-30px);
+  transform: translate(-60px, 10px);
 }
 .playingCard.dragged {
-  opacity: 0.5;
+  opacity: 1%;
 }
 .playingCard img {
-  filter: invert() grayscale();
+  filter: invert() grayscale(100%);
 }

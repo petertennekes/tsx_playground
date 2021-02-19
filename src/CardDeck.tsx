@@ -16,7 +16,7 @@ function CardDeck(props: CardDeckProps) {
       {cards.length > 0 &&
         cards.map((card, index) => (
           <CardArea key={card.key} onDrop={createOnDrop(index)}>
-            <PlayingCard {...card} indexSource={index} />
+            <PlayingCard {...card} indexSource={index}  />
           </CardArea>
         ))}
     </div>

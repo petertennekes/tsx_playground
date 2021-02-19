@@ -25,7 +25,7 @@ const CardArea = (props: CardAreaProps) => {
           : Direction.Left
         : Direction.None;
       return {
-        isOver: !!monitor.isOver(),
+        isOver: monitor.isOver(),
         directionOfDrag: directionOfDrag,
       };
     },
@@ -34,15 +34,15 @@ const CardArea = (props: CardAreaProps) => {
     <div className="card-area">
       <div>
         <div
-          className={classNames("highlight-area left", {
-            hovered: isOver && directionOfDrag === Direction.Left,
-          })}
-        ></div>
+    className={classNames("highlight-area left", {
+      hovered: isOver && directionOfDrag === Direction.Left,
+    })}
+    />
         <div
-          className={classNames("highlight-area right", {
-            hovered: isOver && directionOfDrag === Direction.Right,
-          })}
-        ></div>
+    className={classNames("highlight-area right", {
+      hovered: isOver && directionOfDrag === Direction.Right,
+    })}
+    />
       </div>
       <div className="card-holder" ref={drop}>
         <WithProps isOver={isOver} directionOfDrag={directionOfDrag}>

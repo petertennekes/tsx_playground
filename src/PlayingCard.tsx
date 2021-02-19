@@ -1,9 +1,10 @@
-import { useDrag } from "react-dnd";
+import {useDrag} from "react-dnd";
 
 import ReactMarkdown from "react-markdown";
 import "./PlayingCard.css";
-import { useState } from "react";
-import { Direction } from "./CardArea";
+import {useState} from "react";
+import {Direction} from "./CardArea";
+
 const classNames = require("classnames");
 
 enum CardSides {
@@ -49,7 +50,7 @@ function PlayingCard(props: CardProps) {
   const [{ isDragging }, drag] = useDrag({
     item: { type: DragTypes.CARD, indexSource: indexSource },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   });
   return (
