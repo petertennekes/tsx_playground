@@ -8,7 +8,9 @@ export default function useCards(cardsURL: string) {
   const [cards, setCards] = useState<CardProps[]>([]);
 
   const createOnDrop = (indexTarget: number) => {
+    //"COD created for ", indexTarget
     return (item: any) => {
+      //"COD triggered for ", indexTarget ,"with ", item.indexSource
       const cardsCopy = [...cards];
       const itemToMove = cardsCopy.splice(item.indexSource, 1);
       cardsCopy.splice(indexTarget, 0, ...itemToMove);
