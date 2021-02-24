@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { CardProps } from "./PlayingCard";
-import { io } from "socket.io-client";
+import {Socket} from "socket.io-client";
 
-const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
-const socket = io();
-console.log("connected: ", socket.id);
+export const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 
-export default function useCards(cardsURL: string) {
-  const [loading, setLoading] = useState(true);
+export default function useCards(socket: Socket) {
+
   const [serverCards, setServerCards] = useState<CardProps[]>([]);
   const [localCards, setLocalCards] = useState<CardProps[]>([]);
+
 
   const createOnDrop = (indexTarget: number) => {
     //"COD created for ", indexTarget
@@ -23,28 +22,25 @@ export default function useCards(cardsURL: string) {
     };
   };
 
-  useEffect(() => {
-    fetchJSON(cardsURL).then((fetchedCards) => {
-      setServerCards(fetchedCards);
-      setLoading(false);
-    });
-  }, [cardsURL]);
-
   useEffect(()=>{
     setLocalCards([]);
   },[serverCards]);
 
   useEffect(() => {
     console.log("Set event listner")
-    socket.on('cards', (payload: string)=> {
-      console.log("Received cards");
-      setServerCards(JSON.parse(payload));
-    });
-  }, []);
+    socket.on('cards', (payload: any)=> {
 
+      const receivedCards = (typeof payload === 'string') ? JSON.parse(payload) : payload
+      console.log("Received cards",  receivedCards);
+      setServerCards(JSON.parse(JSON.stringify(receivedCards)));
+    });
+    console.log("connected: ", socket.id);
+
+  }, [socket]);
+  console.log(localCards.length, serverCards.length);
   return {
     cards: localCards.length === 0 ? serverCards : localCards,
-    loading,
+    loading:(localCards.length===0 && serverCards.length===0),
     createOnDrop,
   };
 }

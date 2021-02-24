@@ -1,0 +1,30 @@
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input {
+    background-color: whitesmoke; /* Green */
+    border: 2px lightgray;
+    color: gray;
+
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.banner {
+    background-color: whitesmoke; /* Green */
+    padding: 15px 32px;
+
+    width: 100%;
+    text-align: center;
+}

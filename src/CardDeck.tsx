@@ -1,13 +1,14 @@
 import CardArea from "./CardArea";
 import PlayingCard from "./PlayingCard";
 import useCards from "./useCards";
+import {Socket} from "socket.io-client";
 
 interface CardDeckProps {
-  cardsURL: string;
+  socket: Socket;
 }
 
 function CardDeck(props: CardDeckProps) {
-  const { cards, loading, createOnDrop } = useCards(props.cardsURL);
+  const { cards, loading, createOnDrop } = useCards(props.socket);
 
   if (loading) return <h1>LOADING</h1>;
 
