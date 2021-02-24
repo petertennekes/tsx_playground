@@ -31,3 +31,9 @@
 .playingCard img {
   filter: invert() grayscale(100%);
 }
+
+.card-button {
+  padding: 5px 32px;
+  border-radius: 5px;
+
+}

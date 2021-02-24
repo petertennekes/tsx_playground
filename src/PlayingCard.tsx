@@ -82,7 +82,7 @@ function PlayingCard(props: CardProps) {
         </div>
       </div>
       <div className="card-footer">
-        <button onClick={toggleSide}>Flip</button>
+        <button className="card-button" onClick={toggleSide}>Flip</button>
       </div>
     </div>
   );
