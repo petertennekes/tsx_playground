@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { CardProps } from "./PlayingCard";
 import {Socket} from "socket.io-client";
 
-export const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 
 export default function useCards(socket: Socket) {
 
@@ -37,7 +36,6 @@ export default function useCards(socket: Socket) {
     console.log("connected: ", socket.id);
 
   }, [socket]);
-  console.log(localCards.length, serverCards.length);
   return {
     cards: localCards.length === 0 ? serverCards : localCards,
     loading:(localCards.length===0 && serverCards.length===0),

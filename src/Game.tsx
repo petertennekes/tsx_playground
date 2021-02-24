@@ -3,8 +3,9 @@ import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import CardDeck from "./CardDeck";
 import "./Game.css"
-import {fetchJSON} from "./useCards";
 import {io, Socket} from "socket.io-client";
+
+const fetchJSON = (url: string) => fetch(url).then((r) => r.json());
 
 function Game() {
     const [gameId, setGameId] = useState<string>()
